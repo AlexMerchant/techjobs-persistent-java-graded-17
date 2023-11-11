@@ -9,10 +9,15 @@ import jakarta.validation.constraints.Size;
 
 import java.util.Objects;
 
+@MappedSuperclass
 public abstract class AbstractEntity {
 
+    @Id
+    @GeneratedValue
     private int id;
 
+    @NotNull
+    @Size(message = "'name' field cannot exceed 255 characters", max = 255)
     private String name;
 
     public int getId() {
